@@ -10,7 +10,7 @@
 
 namespace Fractale{
 //Test de condition de div de mandelbrot
-  bool mandelbrot(long double  &R_current, long double &Im_current, const long double R_old, const long double Im_old);
+  bool juliaset(long double  &R_current, long double &Im_current, const long double R_c, const long double Im_c);
 }
 
 #endif /* FRACTALE_H_ */

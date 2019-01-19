@@ -8,7 +8,8 @@ OBJS = $(SRC:.cpp=.o)
 #OBJS += $(SRC:.c=.o)
 
 LDFLAGS += -lSDL2 -fopenmp
-
+CFLAGS += -fopenmp -O2
+CXXFLAGS += -fopenmp -O2
 ifeq ($(BUILD_MODE),debug)
 	CFLAGS += -g 
 else ifeq ($(BUILD_MODE),run)
@@ -20,13 +21,13 @@ endif
 all: $(EXEC)
 
 $(EXEC):	$(OBJS)
-	$(CXX) $(LDFLAGS) -o $@ $^
+	$(CXX)  $(LDFLAGS) -o $@ $^
 
 %.o:	$(PROJECT_ROOT)%.cpp
-	$(CXX) -c $(CFLAGS) $(CXXFLAGS) $(CPPFLAGS) -o $@ $<
+	$(CXX) -fopenmp -c $(CFLAGS) $(CXXFLAGS) $(CPPFLAGS) -o $@ $<
 
 %.o:	$(PROJECT_ROOT)%.c
-	$(CC) -c $(CFLAGS) $(CPPFLAGS) -o $@ $<
+	$(CC) -fopenmp -c $(CFLAGS) $(CPPFLAGS) -o $@ $<
 
 clean:
 	rm -rf $(EXEC) $(OBJS)
